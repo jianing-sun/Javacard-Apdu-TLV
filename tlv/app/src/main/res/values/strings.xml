@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EmbeddedTest</string>
+    <string name="apduValidity">APDU Validity Check</string>
+    <string name="dataStream">Waiting for Data Stream...</string>
+    <string name="decryptData">Waiting for decrypting...</string>
+    <string name="parseData">Waiting for Parsing...</string>
+</resources>
