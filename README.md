@@ -17,8 +17,7 @@ for example, our given example for TLV parsing. (I'll show the result of that la
 
 <table sytle="border: 0px;">
 <tr>
-<td><img width="200px" src="./figures/1.jpeg" /></td>
-<td><img width="200px" src="./figures/2.jpeg" /></td>
+<td><img width="300px" src="./figures/1.jpeg" /></td>
 </tr>
 </table>
 
@@ -26,11 +25,17 @@ for example, our given example for TLV parsing. (I'll show the result of that la
 * If user input is invalid or no input, it would encrypt, decrypt and TLV parse the default given APDU strem:
 80 E2 00 00 0A af 82 11 db db d9 08 12 9b d8. Otherwise it would process the input valid command APDU. 
 * If user input is valid, then it would process the valid command APDU.
-<div align="center">
+<!-- <div align="center">
   <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/2.jpeg" width="300" height=“350">
-  <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/3.jpeg" width="300" height=“350">                                                                                                            
-</div>
-![Image text](https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/3.jpeg)
+  <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/3.jpeg" width="300" height=“350">                                                                                                   
+</div> -->
+<table sytle="border: 0px;">
+<tr>
+<td><img width="300px" src="./figures/2.jpeg" /></td>
+<td><img width="300px" src="./figures/3.jpeg" /></td>
+</tr>
+</table>
+
 3. Using all the classes (APDU, de/encryption, TLV parse), display the result of parsing the 
 given byte stream:   
 `80 E2 00 00 0A af 82 11 db db d9 08 12 9b d8`
@@ -45,10 +50,17 @@ c) parse TLV (1 byte long tag)
 `BE 08 47 06 6F 64 20 4A 6F 62`. The first tag is `BE`, whose constructed flag is True as its sixth bit is 1. That means this is a constructed TLV which contains another TLV inside. The second tag is `47` with value length `06`, therefore the value for second TLV is `6F 64 20 4A 6F 42`.
 
  
-<div align="center">
+<!-- <div align="center">
   <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/4.jpeg" width="300" height=“350">                                                                                                            
   <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/5.jpeg" width="300" height=“350">
-</div>
+</div> -->
+
+<table sytle="border: 0px;">
+<tr>
+<td><img width="300px" src="./figures/4.jpeg" /></td>
+<td><img width="300px" src="./figures/5.jpeg" /></td>
+</tr>
+</table>
 
 4. Result of parsing the given long TLV  
 * Input TLV:
