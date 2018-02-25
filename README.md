@@ -11,9 +11,16 @@ For our requirment, I also process different values into ASCII string and displa
 
 One thing need to pay attention to is that for a TLV stream, it probably embedded with several TLVs inside, 
 for example, our given example for TLV parsing. (I'll show the result of that later)
-<div align="center">
+<!-- <div align="center">
   <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/1.jpeg" width="350" height=“400">                                                                          
-</div>
+</div> -->
+
+<table sytle="border: 0px;">
+<tr>
+<td><img width="200px" src="./figures/1.jpeg" /></td>
+<td><img width="200px" src="./figures/2.jpeg" /></td>
+</tr>
+</table>
 
 2. If user input an invalid command APDU, there would be a Toast showing that this is invalid. 
 * If user input is invalid or no input, it would encrypt, decrypt and TLV parse the default given APDU strem:
