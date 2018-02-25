@@ -32,9 +32,9 @@ a) Get the data field from the apdu
 b) decrypt data -> decrypted data is a TLV   
 c) parse TLV (1 byte long tag) 
 
-* This app can display both the **parsing information** and the **ASCII output** of values. 
+* This app can display both the **parsing information** and the **ASCII string** of values. 
 
-**Explanation for the parsing information which displayed in the view of the app:** After decrpting, the TLV is   
+* **Explanation for the parsing information which displayed in the view of the app:** After decrpting, the TLV is   
 `BE 08 47 06 6F 64 20 4A 6F 62`. The first tag is `BE`, whose constructed flag is True as its sixth bit is 1. That means this is a constructed TLV which contains another TLV inside. The second tag is `47` with value length `06`, therefore the value for second TLV is `6F 64 20 4A 6F 42`.
 
  
