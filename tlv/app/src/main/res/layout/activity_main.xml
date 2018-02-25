@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Valid APDU example: "
+        android:text="@string/validHint"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -18,13 +18,13 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="80 E2 00 00 13 1002 10 01 23 45 67 89 AB CD EF FE DC BA 98 76 54 32 10"
+        android:text="@string/validExample"
         android:textSize="16sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Invalid APDU example: "
+        android:text="@string/invalidExample"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -32,7 +32,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="80 E2 00 00 10 1002 10 01 23 45 67 89 AB CD EF FE DC BA 98 76 54 32 10"
+        android:text="@string/invalidExample"
         android:textSize="16sp" />
 
     <EditText
@@ -40,18 +40,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/apduValidity"
-        android:maxLines="2" />
+        android:maxLines="2"
+        android:textSize="14sp"/>
 
     <Button
         android:id="@+id/confirmCheck"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Check"/>
+        android:text="@string/checkAndProcess"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Target Byte Stream: "
+        android:text="@string/targetByteStream"
         android:textSize="17sp"
         android:textStyle="bold" />
 
@@ -59,14 +60,14 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="80 E2 00 00 0A af 82 11 db db d9 08 12 9b d8"
+        android:text="@string/defaultDataStream"
         android:textSize="16sp" />
 
     <Button
         android:id="@+id/getData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Get Data Stream"/>
+        android:text="@string/getDataHint"/>
 
     <EditText
         android:id="@+id/dataStream"
@@ -79,7 +80,13 @@
         android:id="@+id/decrypt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Decrypt Data" />
+        android:text="@string/decryptedHint" />
+
+    <Button
+        android:id="@+id/encrypt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/encryptedHint" />
 
     <EditText
         android:id="@+id/decryptedData"
@@ -91,7 +98,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="74dp"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         tools:context="com.jianingsun.tlv.MainActivity">
 
@@ -100,14 +107,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="TLV Parse" />
+            android:text="@string/tlvParseHint" />
 
         <Button
             android:id="@+id/ascii"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="ASCII Result" />
+            android:text="@string/asciiHint" />
 
     </LinearLayout>
 
@@ -115,9 +122,7 @@
         android:id="@+id/parsedData"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:hint="TLV parsing information"/>
-
-
+        android:hint="@string/finalDisplay"/>
 
 </LinearLayout>
 

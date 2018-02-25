@@ -24,8 +24,8 @@ public class HexBinUtil {
         }
     }
 
-    public static String toHexString(byte[] aBytes) {
-        return toHexString(aBytes, 0, aBytes.length);
+    public static String toHexString(byte[] mBytes) {
+        return toHexString(mBytes, 0, mBytes.length);
     }
 
 

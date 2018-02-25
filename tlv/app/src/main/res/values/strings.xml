@@ -1,7 +1,20 @@
 <resources>
-    <string name="app_name">EmbeddedTest</string>
-    <string name="apduValidity">APDU Validity Check</string>
+    <string name="app_name">JIANINGSUN</string>
+    <string name="apduValidity">APDU validity check, if it is valid, then process</string>
     <string name="dataStream">Waiting for Data Stream...</string>
-    <string name="decryptData">Waiting for decrypting...</string>
+    <string name="decryptData">Waiting for decrypting/encrypting...</string>
     <string name="parseData">Waiting for Parsing...</string>
+    <string name="targetByteStream">If no APDU input, then by default:</string>
+    <string name="validExample">80 E2 00 00 13 1002 10 01 23 45 67 89 AB CD EF FE DC BA 98 76 54 32 10</string>
+    <string name="invalidExample">80 E2 00 00 10 1002 10 01 23 45 67 89 AB CD EF FE DC BA 98 76 54 32 10</string>
+    <string name="validHint">Valid APDU example: </string>
+    <string name="invalidHint">Invalid APDU example: </string>
+    <string name="getDataHint">Get Data Stream</string>
+    <string name="decryptedHint">Decrypt Data</string>
+    <string name="encryptedHint">Encrypt Data</string>
+    <string name="tlvParseHint">TLV Parse</string>
+    <string name="asciiHint">Ascii Result of Value</string>
+    <string name="checkAndProcess">Check and Process</string>
+    <string name="finalDisplay">TLV parsing information</string>
+    <string name="defaultDataStream">80 E2 00 00 0A af 82 11 db db d9 08 12 9b d8</string>
 </resources>

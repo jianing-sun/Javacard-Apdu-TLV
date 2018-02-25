@@ -23,10 +23,11 @@ public class CommandAPDU {
     final byte LC_LENGTH = 1;
     final byte HEADER_LENGTH = 4;
 
-    public String CheckValidity(byte[] mBuf, int mLength) {
+    public boolean CheckValidity(byte[] mBuf, int mLength) {
 
         if (mLength < 4) {  // invalid
-            return "INVALID: command apdu must larger than 4 bytes";
+            return false;
+//            return "INVALID: command apdu must larger than 4 bytes";
         } else {    // case 2-4
             byte cla = mBuf[0];
             byte ins = mBuf[1];
@@ -37,34 +38,40 @@ public class CommandAPDU {
             if (mLength == HEADER_LENGTH) { // case 1: header
                 out = CommandAPDU(cla, ins, p1, p2);
                 Log.d("Apdu Case Type", "Case 1: CLA_INS_P1_P2");
-                return "Case 1: CLA_INS_P1_P2";
+//                return "Case 1: CLA_INS_P1_P2";
+                return true;
             } else if (mLength >= 5 && mLength <= 7) {  // case 2: header + 1-3 bytes Le
                 Log.d("Apdu Case Type", "Case 2: CLA_INS_P1_P2_1-3BytesLe");
-                return "Case 2: CLA_INS_P1_P2_1-3BytesLe";
+//                return "Case 2: CLA_INS_P1_P2_1-3BytesLe";
+                return true;
             } else if (mLength > HEADER_LENGTH) {
                 byte lc = mBuf[4];
                 if (mLength == lc + HEADER_LENGTH + LC_LENGTH) {
                     Log.d("Apdu Case Type", "Case 3: CLA_INS_P1_P2_Lc_data");
                     hasData = true;
-                    return "Case 3: CLA_INS_P1_P2_Lc_data";
+                    return true;
+//                    return "Case 3: CLA_INS_P1_P2_Lc_data";
                 } else if (mLength > lc + HEADER_LENGTH + LC_LENGTH
                             && mLength < lc + HEADER_LENGTH + LC_LENGTH + 3) {
                     hasData = true;
                     Log.d("debug", "mLength: "+ mLength + "lc: " + lc);
                     Log.d("Apdu Case Type", "Case 4: CLA_INS_P1_P2_Lc_data_Le");
-                    return "Case 4: CLA_INS_P1_P2_Lc_data_Le";
+                    return true;
+//                    return "Case 4: CLA_INS_P1_P2_Lc_data_Le";
                 }
             } else {
-                return "INVALID APDU COMMAND";
+                return false;
+//                return "INVALID APDU COMMAND";
             }
         }
 
-        return "INVALID APDU COMMAND";
+        return false;
+//        return "INVALID APDU COMMAND";
 
     }
 
     // get data byte array
-    public byte[] getData(byte[] mBuf, int mLength) {
+    public byte[] getData(byte[] mBuf) {
 
         byte[] data = new byte[mBuf[4]];
         System.arraycopy(mBuf, 5, data, 0, mBuf[4]);
