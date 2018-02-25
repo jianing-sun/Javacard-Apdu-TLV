@@ -25,9 +25,14 @@ for example, our given example for TLV parsing. (I'll show the result of that la
 </div>
 
 3. Using all the classes (APDU, de/encryption, TLV parse), display the result of parsing the 
-given byte stream: 80 E2 00 00 0A af 82 11 db db d9 08 12 9b d8  
+given byte stream:   
+`80 E2 00 00 0A af 82 11 db db d9 08 12 9b d8`
+* This app can display both the information after parsing and the ASCII output of values. 
+
+**Explanation for the parsing information which displayed in the view of the app:** After decrpting, the TLV is `BE 08 47 06 6F 64 20 4A 6F 62`. The first tag is `BE`, whose constructed flag is True as its sixth bit is 1. That means this is a constructed TLV which contains another TLV inside. The second tag is `47` with value length `06`, therefore the value for second TLV is `6F 64 20 4A 6F 42`.
+
 This is an APDU with an encrypted TLV in its data field.  
-a) Get the data field from the apdu  
+a) Get the data field from the apdu 
 b) decrypt data -> decrypted data is a TLV  
 c) parse TLV (1 byte long tag)  
 <div align="center">
