@@ -8,7 +8,7 @@ if it is valid, then process it for the next de/encryption and TLV parse.
 cyclic left shift 2 bits, and encryption means cyclic right shift 2 bits.
 * Thid part is the TLV parse part. It can parse the decrypted data and return with its tag-length-value information.
 For our requirment, I also process different values into ASCII string and display it in the view. 
-- One thing need to pay attention to is that for a TLV stream, there probably embedded with several TLVs with it, 
+One thing need to pay attention to is that for a TLV stream, there probably embedded with several TLVs with it, 
 for example, our given example for TLV parsing. (I'll show the result of that later)
 <div align="center">
   <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/1.jpeg" width="350" height=“400">
