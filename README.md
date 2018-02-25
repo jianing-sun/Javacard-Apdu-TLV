@@ -23,7 +23,7 @@ for example, our given example for TLV parsing. (I'll show the result of that la
   <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/2.jpeg" width="300" height=“350">
   <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/3.jpeg" width="300" height=“350">                                                                                                            
 </div>
-
+![Image text](https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/3.jpeg)
 3. Using all the classes (APDU, de/encryption, TLV parse), display the result of parsing the 
 given byte stream:   
 `80 E2 00 00 0A af 82 11 db db d9 08 12 9b d8`
