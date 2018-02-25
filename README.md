@@ -13,8 +13,9 @@ One thing need to pay attention to is that for a TLV stream, it probably embedde
 for example, our given example for TLV parsing. (I'll show the result of that later)
 <div align="center">
 <!--   <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/1.jpeg" width="350" height=“400"> -->
-  #### ![Figure 1]("https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/1.jpeg)                                                                               
+  #### ![Figure 1](https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/1.jpeg)                                                                               
 </div>
+[Figure 1](https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/1.jpeg)
 
 2 If user input an invalid command APDU, there would be a Toast showing that this is invalid. 
 * If user input is invalid or no input, it would encrypt, decrypt and TLV parse the default given APDU strem:
