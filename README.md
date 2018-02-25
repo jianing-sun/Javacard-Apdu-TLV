@@ -15,7 +15,7 @@ for example, our given example for TLV parsing. (I'll show the result of that la
 <!--   <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/1.jpeg" width="350" height=“400"> -->
   #### ![Figure 1](https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/1.jpeg)                                                                               
 </div>
-![Figure 1](https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/1.jpeg)
+![Smaller icon](http://25.io/smaller/favicon.ico "Title here")
 
 2 If user input an invalid command APDU, there would be a Toast showing that this is invalid. 
 * If user input is invalid or no input, it would encrypt, decrypt and TLV parse the default given APDU strem:
