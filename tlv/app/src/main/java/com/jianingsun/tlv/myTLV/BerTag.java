@@ -29,7 +29,9 @@ public class BerTag {
     check if this tlv embedded with other tlv
      */
     public boolean isConstructed() {
-        return (bytes[0] & 0x20) != 0;
+        int a =  bytes[0] & 0x20;
+
+        return (bytes[0] & 0x20) == 0;
     }
 
     /*

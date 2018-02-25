@@ -56,6 +56,20 @@ public class HexBinUtil {
         return new String(dst);
     }
 
+    // convert dec byte array to string
+    public static String DectoBinString(byte[] mBytes) {
+        StringBuilder binStr = new StringBuilder();
+        String temp = "";
+
+        for (int i=0; i<mBytes.length; i++) {
+            temp = Integer.toBinaryString(mBytes[i]);
+//            binStr.append(" ");
+            binStr.append(temp);
+        }
+
+        return String.valueOf(binStr);
+    }
+
     // convert hex string to binary byte array
     public static byte[] hextoBinByteArry(String mhexString) {
 

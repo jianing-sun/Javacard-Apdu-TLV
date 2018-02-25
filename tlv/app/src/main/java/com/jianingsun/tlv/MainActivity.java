@@ -1,15 +1,19 @@
 package com.jianingsun.tlv;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jianingsun.tlv.myAPDU.CommandAPDU;
 import com.jianingsun.tlv.myEncryption.Decrypt;
+import com.jianingsun.tlv.myTLV.BerTlvBox;
+import com.jianingsun.tlv.myTLV.BerTlvParser;
 import com.jianingsun.tlv.myTLV.BerTlvParserTest;
 import com.jianingsun.tlv.myTLV.HexBinUtil;
 
@@ -18,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText ApduCheckText;
     private EditText DataStream;
     private EditText DecryptData;
+    private TextView Info;
 
     final String APDU_VALID = "80 E2 00 00 13 10 02 10 01 23 45 67"
                             + "89 AB CD EF FE DC BA 98 76 54 32 10";
@@ -35,18 +40,17 @@ public class MainActivity extends AppCompatActivity {
         ApduCheckText = (EditText) findViewById(R.id.apdu_check);
         DataStream = (EditText) findViewById(R.id.dataStream);
         DecryptData = (EditText) findViewById(R.id.decryptedData);
+        Info = (TextView) findViewById(R.id.parsedData);
 
         Button checkApdu = (Button) findViewById(R.id.confirmCheck);
         Button getData = (Button) findViewById(R.id.getData);
         Button encode = (Button) findViewById(R.id.decrypt);
-        Button move = (Button) findViewById(R.id.movetoTLV);
-
-        BerTlvParserTest test = new BerTlvParserTest();
-        test.parse(finalHex).toString();
-        Log.d("test", test.parse(finalHex).toString());
+        Button ascii = (Button) findViewById(R.id.ascii);
+        final Button parse = (Button) findViewById(R.id.parse);
 
 
         final CommandAPDU commandAPDU = new CommandAPDU();
+        final SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
 
         checkApdu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,12 +86,50 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("decrypt", "hex before decrypting: " + dataString);
                 Log.d("decrypt", "hex after decrypting: " + hexAfterDecrypt);
 
+
+                editor.putString("after_decrypt", hexAfterDecrypt);
+
                 DecryptData.setText(hexAfterDecrypt);
             }
         });
 
+        parse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences pref = getSharedPreferences("data", MODE_PRIVATE);
+                String before = pref.getString("after_decrypt", "");
+
+                byte[] bytes = HexBinUtil.parseHex(finalHex);
+                BerTlvParser parser = new BerTlvParser();
+                BerTlvBox tlvs = parser.parse(bytes, 0,bytes.length);
+
+                editor.putString("Tlv parsing information", tlvs.toString());
+                Log.d("test", tlvs.toString());
+
+                Info.setText(tlvs.toString());
+                editor.putString("Tlv parsing ascii information", parser.getInfo(bytes,0));
+
+
+            }
+        });
+
+        ascii.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences pref = getSharedPreferences("data", MODE_PRIVATE);
+                String before = pref.getString("after_decrypt", "");
+
+                byte[] bytes = HexBinUtil.parseHex(finalHex);
+                BerTlvParser parser = new BerTlvParser();
+                BerTlvBox tlvs = parser.parse(bytes, 0,bytes.length);
+
+                editor.putString("Tlv parsing ascii information", parser.getInfo(bytes,0));
+                Info.setText(parser.getInfo(bytes,0));
+            }
+        });
 
     }
+
 
     public String decrypt (String str, int index) {
         Decrypt decrypt = new Decrypt();
@@ -99,9 +141,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Decrypt", "second " + second);
         str = first + second;
         Log.d("Decrypt", "final " + str);
-//        str = decrypt.reChange(str);
+//        str = decrypt.reChange(str);              // opposite shifting direction
         return str;
     }
+
 
 }
 

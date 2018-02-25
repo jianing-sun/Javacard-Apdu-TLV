@@ -9,15 +9,15 @@ import java.util.ArrayList;
 
 public class BerTlvBox {
 
-    protected BerTlvBox(List<BerTlv> aTlvs) {
-        tlvs = aTlvs;
+    protected BerTlvBox(List<BerTlv> mTlvs) {
+        tlvs = mTlvs;
     }
 
     private final List<BerTlv> tlvs;
 
-    public BerTlv find(BerTag aTag) {
+    public BerTlv find(BerTag mTag) {
         for (BerTlv tlv : tlvs) {
-            BerTlv found = tlv.find(aTag);
+            BerTlv found = tlv.find(mTag);
             if(found!=null) {
                 return found;
             }
@@ -42,6 +42,10 @@ public class BerTlvBox {
         return "BerTlvBox{" +
                 "tlvs=" + tlvs +
                 '}';
+    }
+
+    public String getAllValue() {
+        return tlvs.toString();
     }
 
 }

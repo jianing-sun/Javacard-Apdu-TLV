@@ -1,5 +1,7 @@
 package com.jianingsun.tlv.myTLV;
 
+import android.util.Log;
+
 /**
  * Created by jianingsun on 2018-02-23.
  */
@@ -17,16 +19,19 @@ public class BerTlvParserTest {
 //        String hex = "BE 08 47 6F 6F 64 20 4A 6F 62";
 
 
-        parse(hex);
+//        parse(hex);
     }
 
-    public BerTlvBox parse(String hex) {
-
-        byte[] bytes = HexBinUtil.parseHex(hex);
-
-        BerTlvParser parser = new BerTlvParser();
-        BerTlvBox tlvs = parser.parse(bytes, 0,bytes.length-1);
-        return tlvs;
-    }
+//    public BerTlvBox parse(String hex) {
+//
+//        byte[] bytes = HexBinUtil.parseHex(hex);
+//
+//        BerTlvParser parser = new BerTlvParser();
+//        BerTlvBox tlvs = parser.parse(bytes, 0,bytes.length);
+//        Log.d("ascii 2", parser.getInfo(bytes, 0, bytes.length));
+//        Log.d("ascii", tlvs.getAllValue());
+//
+//        return tlvs;
+//    }
 
 }

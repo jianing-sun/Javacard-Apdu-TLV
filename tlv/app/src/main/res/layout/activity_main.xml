@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_margin="0dp"
     tools:context="com.jianingsun.tlv.MainActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Valid APDU example: "
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
@@ -18,13 +19,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="80 E2 00 00 13 1002 10 01 23 45 67 89 AB CD EF FE DC BA 98 76 54 32 10"
-        android:textSize="18sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Invalid APDU example: "
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
@@ -32,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="80 E2 00 00 10 1002 10 01 23 45 67 89 AB CD EF FE DC BA 98 76 54 32 10"
-        android:textSize="18sp" />
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/apdu_check"
@@ -59,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="80 E2 00 00 0A af 82 11 db db d9 08 12 9b d8"
-        android:textSize="18sp" />
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/getData"
@@ -75,10 +76,10 @@
         android:hint="@string/dataStream" />
 
     <Button
-    android:id="@+id/decrypt"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Decrypt Data"/>
+        android:id="@+id/decrypt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Decrypt Data" />
 
     <EditText
         android:id="@+id/decryptedData"
@@ -87,12 +88,36 @@
         android:inputType="textPersonName"
         android:hint="@string/decryptData" />
 
-    <Button
-        android:id="@+id/movetoTLV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="GO TO TLV PARSING"
-        android:layout_marginTop="35dp"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:orientation="horizontal"
+        tools:context="com.jianingsun.tlv.MainActivity">
+
+        <Button
+            android:id="@+id/parse"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="TLV Parse" />
+
+        <Button
+            android:id="@+id/ascii"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="ASCII Result" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/parsedData"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="TLV parsing information"/>
+
+
 
 </LinearLayout>
+

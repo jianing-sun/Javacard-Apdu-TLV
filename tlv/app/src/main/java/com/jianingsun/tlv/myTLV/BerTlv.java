@@ -31,6 +31,9 @@ public class BerTlv {
         theList = null;
     }
 
+    public List<BerTlv> getTheList() {
+        return theList;
+    }
 
     public BerTag getTag() {
         return theTag;

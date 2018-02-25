@@ -23,7 +23,7 @@ public class BerTlvParser {
 
     public BerTlvBox parse(byte[] mBuf, final int mOffset, int mLen) {
         List<BerTlv> tlvs = new ArrayList<BerTlv>();
-        if(mLen==0) return new BerTlvBox(tlvs);
+        if(mLen == 0) return new BerTlvBox(tlvs);
 
         int offset = mOffset;
         for(int i=0; i<100; i++) {
@@ -48,10 +48,10 @@ public class BerTlvParser {
         }
 
         // tag
-        BerTag tag        = createTag(mBuf, mOffset, TAG_BYTE);
+        BerTag tag = createTag(mBuf, mOffset, TAG_BYTE);
 
         // length
-        int valueLength       = getDataLength(mBuf, mOffset + LENGTH_BYTE);
+        int valueLength = getDataLength(mBuf, mOffset + LENGTH_BYTE);
 
         // value
         if(tag.isConstructed()) {
@@ -72,6 +72,29 @@ public class BerTlvParser {
         }
 
     }
+
+
+    public String getInfo(byte[] mBuf, int mOffset) {
+
+//        if(mOffset+mLen > mBuf.length) {
+//            throw new IllegalStateException("Length is out of the range [offset="+mOffset+",  len="+mLen+", array.length="+mBuf.length+"," +"]");
+//        }
+
+        // tag
+        BerTag tag = createTag(mBuf, mOffset, TAG_BYTE);
+
+        // length
+        int valueLength = getDataLength(mBuf, mOffset + LENGTH_BYTE);
+        byte[] value = new byte[valueLength];
+        // value
+        if(!tag.isConstructed()) {
+
+            System.arraycopy(mBuf, mOffset+TAG_BYTE+LENGTH_BYTE, value, 0, valueLength);
+
+        }
+        return HexBinUtil.DectoBinString(value);
+    }
+
 
     /**
      * @param mBuf            buffer
@@ -94,9 +117,9 @@ public class BerTlvParser {
 
 
     private static class ParseResult {
-        public ParseResult(BerTlv aTlv, int aOffset) {
-            tlv = aTlv;
-            offset = aOffset;
+        public ParseResult(BerTlv mTlv, int mOffset) {
+            tlv = mTlv;
+            offset = mOffset;
         }
 
         @Override
