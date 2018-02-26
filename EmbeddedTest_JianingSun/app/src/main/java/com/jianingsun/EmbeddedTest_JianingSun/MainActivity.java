@@ -30,10 +30,29 @@ public class MainActivity extends AppCompatActivity {
                             + "89 AB CD EF FE DC BA 98 76 54 32 10";
     final String APDU_INVALID = "80 E2 00 00 10 10 02 10 01 23 45 67"
                               + "89 AB CD EF FE DC BA 98 76 54 32 10";
-    final String APDU_STREAM = "80 E2 00 00 0A AF 82 11 DB DB D9 08 12 9B D8";
+    final String APDU_STREAM = "80 E2 00 00 0A af 82 11 db db d9 08 12 9b d8";
     final String HEX = "61 0A 4F 08 A0 00 00 01 51 00 00 00" +
-                       "61 0E 4F 0C A0 00 00 00 01 51 53 50 41 53 4B 4D 53";
-    final String finalHex = "BE 08 47 6F 6F 64 20 4A 6F 62";
+                       "61 0E 4F 0C A0 00 00 00 01 51 53 50 41 53 4B 4D";
+    final String finalHex = "BE 08 47 06 6F 64 20 4A 6F 62";
+    final String TLV_CHECK = "61 0A 4F 08 A0 00 00 01 51 00 00 00 61 0E 4F 0C"
+                          + "A0 00 00 01 51 53 50 41 53 4B 4D 53 61 10 4F 0E"
+                          + "A0 00 00 01 51 53 50 41 4C 43 43 4D 41 4D 61 10"
+                          + "4D 0E A0 00 00 01 51 53 50 41 4C 43 43 4D 44 4D"
+                          + "61 0F 4F 0D A0 00 00 01 51 53 50 41 53 33 53 53"
+                          + "44 61 0C 4F 0A A9 A8 A7 A6 A5 A4 A3 A2 A1 A0 61"
+                          + "0C 4F 0A A9 A8 A7 A6 A5 A4 A3 A2 A1 A1 61 0E 4F"
+                          + "0C A0 00 00 00 03 53 50 42 00 01 42 01 61 0E 4F"
+                          + "0C A0 00 00 01 51 53 50 43 41 53 44 00 61 0B 4F"
+                          + "09 A0 00 00 01 51 41 43 4C 00 61 12 4F 10 A0 00"
+                          + "00 00 77 01 07 82 1D 00 00 FE 00 00 02 00 61 12"
+                          + "4F 10 A0 00 00 02 20 53 45 43 53 45 53 50 52 4F"
+                          + "54 31 61 12 4F 10 A0 00 00 02 20 53 45 43 53 54"
+                          + "4F 52 41 47 45 31 61 12 4F 10 A0 00 00 02 20 15"
+                          + "03 01 03 00 00 00 41 52 41 43 61 0C 4F 0A A0 A1"
+                          + "A2 A3 A4 A5 A6 A7 A8 A9 61 0C 4F 0A A0 A1 A2 A3"
+                          + "A4 A5 A6 A7 A8 AA 61 12 4F 10 A0 00 00 00 77 02"
+                          + "07 60 11 00 00 FE 00 00 FE 00 61 0B 4F 09 A0 00"
+                          + "00 01 51 43 52 53 00";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +73,14 @@ public class MainActivity extends AppCompatActivity {
         final CommandAPDU commandAPDU = new CommandAPDU();
         final SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
 
-      final SharedPreferences pref = getSharedPreferences("data", MODE_PRIVATE);
-//      final boolean valid = false;
+        final SharedPreferences pref = getSharedPreferences("data", MODE_PRIVATE);
+
+//        /* TEST BEGIN */
+        byte[] bytes = HexBinUtil.parseHex(TLV_CHECK);
+        BerTlvParser parser = new BerTlvParser();
+        BerTlvBox tlvs = parser.parse(bytes, (byte)(0),(byte)(bytes.length));
+        Log.d("check tlv result", tlvs.toString());
+        /* TEST END */
 
         ApduCheck apduCheck = new ApduCheck();
         Map map = apduCheck.parseApdu(HexBinUtil.parseHex(APDU_STREAM));
@@ -155,14 +180,12 @@ public class MainActivity extends AppCompatActivity {
 
                 byte[] bytes = HexBinUtil.parseHex(finalHex);
                 BerTlvParser parser = new BerTlvParser();
-                BerTlvBox tlvs = parser.parse(bytes, 0,bytes.length);
+                BerTlvBox tlvs = parser.parse(bytes, (byte)(0),(byte)(bytes.length));
 
                 editor.putString("Tlv parsing information", tlvs.toString());
                 Log.d("test", tlvs.toString());
 
                 Info.setText(tlvs.toString());
-                editor.putString("Tlv parsing ascii information", parser.getInfo(bytes,0));
-
                 editor.apply();
             }
         });
@@ -175,10 +198,11 @@ public class MainActivity extends AppCompatActivity {
 
                 byte[] bytes = HexBinUtil.parseHex(finalHex);
                 BerTlvParser parser = new BerTlvParser();
-                BerTlvBox tlvs = parser.parse(bytes, 0,bytes.length);
+                BerTlvBox tlvs = parser.parse(bytes, (byte)(0),(byte)(bytes.length));
 
-                editor.putString("Tlv parsing ascii information", parser.getInfo(bytes,0));
-                Info.setText(parser.getInfo(bytes,0));
+//                editor.putString("Tlv parsing ascii information", parser.getInfo(bytes,0));
+                Info.setText(parser.ascii_info);
+                Log.d("overall ascii", parser.ascii_info);
                 editor.apply();
             }
         });

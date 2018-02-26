@@ -18,6 +18,7 @@ public class Encryption {
 
     public static String reverse(String inStr) {
         char[] outStr = inStr.toCharArray();
+        Log.d("Encryption", "original: " + String.valueOf(outStr));
         for (int i = 0; i < inStr.length() / 2; i++) {
             char temp = outStr[i];
             outStr[i] = outStr[outStr.length - 1 - i];

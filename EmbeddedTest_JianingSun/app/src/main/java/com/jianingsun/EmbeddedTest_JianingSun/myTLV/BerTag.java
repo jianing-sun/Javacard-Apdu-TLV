@@ -10,17 +10,17 @@ public class BerTag {
     public final byte[] bytes;
 
     // in our case all tag is 1 byte length
-    public BerTag(byte[] aBuf) {
-        this(aBuf, 0, aBuf.length);
+    public BerTag(byte[] mBuf) {
+        this(mBuf, 0, mBuf.length);
     }
 
-    public BerTag(byte[] aBuf, int aOffset, int aLength) {
-        byte[] temp = new byte[aLength];
-        System.arraycopy(aBuf, aOffset, temp, 0, aLength);
+    public BerTag(byte[] mBuf, int mOffset, int mLength) {
+        byte[] temp = new byte[mLength];
+        System.arraycopy(mBuf, mOffset, temp, 0, mLength);
         bytes = temp;
     }
 
-    public BerTag(int mOneByte) {
+    public BerTag(byte mOneByte) {
         bytes = new byte[]{(byte) mOneByte};
     }
 
@@ -31,7 +31,7 @@ public class BerTag {
     public boolean isConstructed() {
         int a =  bytes[0] & 0x20;
 
-        return (bytes[0] & 0x20) == 0;
+        return (bytes[0] & 0x20) != 0;
     }
 
     /*

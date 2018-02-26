@@ -122,4 +122,15 @@ public class BerTlv {
                 '}';
     }
 
+    public String getValueAscii() {
+//        StringBuilder asciiValus = new StringBuilder();
+//        if (theList != null) {
+//            theList.toString();
+//        }
+        if (theValue == null) {
+            return "00000000";
+        }
+        return HexBinUtil.DectoBinString(theValue);
+    }
+
 }

@@ -65,6 +65,7 @@ public class HexBinUtil {
             temp = Integer.toBinaryString(mBytes[i]);
 //            binStr.append(" ");
             binStr.append(temp);
+            binStr.append(" ");
         }
 
         return String.valueOf(binStr);
