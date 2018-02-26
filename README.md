@@ -1,5 +1,5 @@
 # Javacard Embedded Test - Jianing Sun
-## Java Mechanisms with Embedded Context
+## Java Mechanisms in Embedded Context
 * Java is a general purpose programming technology based on statically typed object oriented. JVM 
 (java Virtual Machine) is useful when it comes to embedded system. Becase Java program source files
 are compiled into a well-defined assembly code specified for JVM which virtualizes the underlying 
