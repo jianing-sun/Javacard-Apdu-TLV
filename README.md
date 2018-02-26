@@ -56,8 +56,8 @@ for example, our given example for TLV parsing. (I'll show the result of that la
 
 3. Using all the classes (APDU, de/encryption, TLV parse), display the result of parsing the 
 given byte stream:   
-`80 E2 00 00 0A af 82 11 db db d9 08 12 9b d8`
-This is an APDU with an encrypted TLV in its data field.  
+`80 E2 00 00 0A af 82 11 db db d9 08 12 9b d8`   
+This is an APDU with an encrypted TLV in its data field.     
 a) Get the data field from the apdu 
 b) decrypt data -> decrypted data is a TLV   
 c) parse TLV (1 byte long tag) 
