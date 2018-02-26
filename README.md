@@ -14,7 +14,7 @@ maximizes data memory availability during program execution.
 simple built-in mechanisms, like thread management and synchronization for mutual exclusive access of
 code blocks and reliable communication between threads.  
 * Embedded & Simulated Java Platform: Java platform is standardized by a well-defined execution model
-and software APIs, and it separates the hardware, drivers and virtual processor form the software
+and software APIs, and it separates the hardware, drivers and virtual processor from the software
 application layers.
 
 ## Instruction of the Android Application
