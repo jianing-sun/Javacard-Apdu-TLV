@@ -1,4 +1,22 @@
 # Javacard Embedded Test - Jianing Sun
+## Java Mechanisms with Embedded Context
+* Java is a general purpose programming technology based on statically typed object oriented. JVM 
+(java Virtual Machine) is useful when it comes to embedded system. Becase Java program source files
+are compiled into a well-defined assembly code specified for JVM which virtualizes the underlying 
+execution architecture. The association of an object-oriented programming language and of a virtual
+provides many key benefits.  
+* Java mainly borrows its syntax from C, but uses OOP paradigm that supports a dual paradigm (OOP like 
+Java and imperative like C).  
+* GC (Garbage collector) is also a powerful tool for embedded with Java. Data memory management is 
+automatic and controlled by the garbage collector. The GC can be considered a memory optimizer that 
+maximizes data memory availability during program execution. 
+* Multi-threading is another important feature. Both the Java language and the virtual machine offer
+simple built-in mechanisms, like thread management and synchronization for mutual exclusive access of
+code blocks and reliable communication between threads.  
+* Embedded & Simulated Java Platform: Java platform is standardized by a well-defined execution model
+and software APIs, and it separates the hardware, drivers and virtual processor form the software
+application layers.
+
 ## Instruction of the Android Application
 1. Below is the main view of this application. From the requirements of this app, there are mainly
 three parts (from top to bottom): 
