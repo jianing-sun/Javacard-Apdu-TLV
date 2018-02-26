@@ -1,4 +1,22 @@
 # Javacard Embedded Test - Jianing Sun
+## Java Mechanisms in Embedded Context
+* Java is a general purpose programming technology based on statically typed object oriented. JVM 
+(java Virtual Machine) is useful when it comes to embedded system. Becase Java program source files
+are compiled into a well-defined assembly code specified for JVM which virtualizes the underlying 
+execution architecture. The association of an object-oriented programming language and of a virtual
+provides many key benefits.  
+* Java mainly borrows its syntax from C, but uses OOP paradigm that supports a dual paradigm (OOP like 
+Java and imperative like C).  
+* GC (Garbage collector) is also a powerful tool for embedded with Java. Data memory management is 
+automatic and controlled by the garbage collector. The GC can be considered a memory optimizer that 
+maximizes data memory availability during program execution. 
+* Multi-threading is another important feature. Both the Java language and the virtual machine offer
+simple built-in mechanisms, like thread management and synchronization for mutual exclusive access of
+code blocks and reliable communication between threads.  
+* Embedded & Simulated Java Platform: Java platform is standardized by a well-defined execution model
+and software APIs, and it separates the hardware, drivers and virtual processor form the software
+application layers.
+
 ## Instruction of the Android Application
 1. Below is the main view of this application. From the requirements of this app, there are mainly
 three parts (from top to bottom): 
@@ -11,18 +29,30 @@ For our requirment, I also process different values into ASCII string and displa
 
 One thing need to pay attention to is that for a TLV stream, it probably embedded with several TLVs inside, 
 for example, our given example for TLV parsing. (I'll show the result of that later)
-<div align="center">
+<!-- <div align="center">
   <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/1.jpeg" width="350" height=“400">                                                                          
-</div>
+</div> -->
+
+<table sytle="border: 0px;">
+<tr>
+<td><img width="300px" src="./figures/1.jpeg" /></td>
+</tr>
+</table>
 
 2. If user input an invalid command APDU, there would be a Toast showing that this is invalid. 
 * If user input is invalid or no input, it would encrypt, decrypt and TLV parse the default given APDU strem:
 80 E2 00 00 0A af 82 11 db db d9 08 12 9b d8. Otherwise it would process the input valid command APDU. 
 * If user input is valid, then it would process the valid command APDU.
-<div align="center">
+<!-- <div align="center">
   <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/2.jpeg" width="300" height=“350">
-  <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/3.jpeg" width="300" height=“350">                                                                                                            
-</div>
+  <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/3.jpeg" width="300" height=“350">                                                                                                   
+</div> -->
+<table sytle="border: 0px;">
+<tr>
+<td><img width="300px" src="./figures/2.jpeg" /></td>
+<td><img width="300px" src="./figures/3.jpeg" /></td>
+</tr>
+</table>
 
 3. Using all the classes (APDU, de/encryption, TLV parse), display the result of parsing the 
 given byte stream:   
@@ -38,9 +68,17 @@ c) parse TLV (1 byte long tag)
 `BE 08 47 06 6F 64 20 4A 6F 62`. The first tag is `BE`, whose constructed flag is True as its sixth bit is 1. That means this is a constructed TLV which contains another TLV inside. The second tag is `47` with value length `06`, therefore the value for second TLV is `6F 64 20 4A 6F 42`.
 
  
-<div align="center">
+<!-- <div align="center">
   <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/4.jpeg" width="300" height=“350">                                                                                                            
-</div>
+  <img src="https://github.com/jianingsun21/javacard-apdu-tlv/blob/master/figures/5.jpeg" width="300" height=“350">
+</div> -->
+
+<table sytle="border: 0px;">
+<tr>
+<td><img width="300px" src="./figures/4.jpeg" /></td>
+<td><img width="300px" src="./figures/5.jpeg" /></td>
+</tr>
+</table>
 
 4. Result of parsing the given long TLV  
 * Input TLV:
