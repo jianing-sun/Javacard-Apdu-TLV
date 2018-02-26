@@ -129,14 +129,16 @@ BerTlv{theTag=+ 61, theValue=null, theList=[BerTlv{theTag=- 4F, theValue=[-96, 0
 is `1`, from the definition of [BER encoding](https://www.wikiwand.com/en/X.690#/BER_encoding), it should be
 a constructed TLV, which means it contains another TLV inside. Hence, `47` is another tag, and the length is
 `6F`, however, it only has 6 values, smaller than 6F. In the end, I changed `6F` to `06` to match the 
-definition of TLV so that to correctly parse it.  
+definition of TLV in order to correctly parse it.  
 * I wrote some utilities to do hex/bin/dec convert along with byte array/string convert. Sometimes I need to 
 operate for a long string which is way more than 128. As the time for submitting this "homework" is limited, 
 I just use `int` first. I'd like to modify all of these type problem and perfect it later, but I want send
-this version to you first, as it has already achieved all the required functions. Really sorry about that. 
+this version to you first, as it has already achieved all the required functions. Really sorry about that. I'll 
+fit that these days.
 
-Best Regards,
-Jianing Sun
+Best Regards,  
+Jianing Sun  
+jianing.sun@mail.mcgill.ca  
 
 
 
