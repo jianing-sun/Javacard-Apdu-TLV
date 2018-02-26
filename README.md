@@ -128,7 +128,7 @@ a constructed TLV, which means it contains another TLV inside. Hence, `47` is an
 `6F`, however, it only has 6 values, smaller than 6F. In the end, I changed `6F` to `06` to match the 
 definition of TLV in order to correctly parse it.  
 * I wrote some utilities to do hex/bin/dec convert along with byte array/string convert. Sometimes I need to 
-operate for a long string which is longer more than 128. As the time for submitting this "homework" is limited, 
+operate for a long string which is way longer than 128. As the time for submitting this "homework" is limited, 
 I just use `int` first. I'd like to modify all of these type problem and perfect it later, but I want send
 this version to you first, as it has already achieved all the required functions. Really sorry about that. I'll 
 fit that these days.
