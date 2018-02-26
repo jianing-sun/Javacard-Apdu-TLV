@@ -123,3 +123,20 @@ theTag=- 4F, theValue=[-96, 0, 0, 0, 119, 2, 7, 96, 17, 0, 0, -2, 0, 0, -2,0], t
 BerTlv{theTag=+ 61, theValue=null, theList=[BerTlv{theTag=- 4F, theValue=[-96, 0, 0,1, 81, 67, 82,   
 83, 0], theList=null}]}]}            
 ```
+### Two problems remain:
+* given the data filed of APDU stream: `af 82 11 db db d9 08 12 9b d8`, after decrypting, it converts to
+`BE 08 47 6F 6F 64 20 4A 6F 62` (2 bits cyclic left shift). For the first tag, `BE 10111110`, its sixth bit
+is `1`, from the definition of [BER encoding](https://www.wikiwand.com/en/X.690#/BER_encoding), it should be
+a constructed TLV, which means it contains another TLV inside. Hence, `47` is another tag, and the length is
+`6F`, however, it only has 6 values, smaller than 6F. In the end, I changed `6F` to `06` to match the 
+definition of TLV so that to correctly parse it.  
+* I wrote some utilities to do hex/bin/dec convert along with byte array/string convert. Sometimes I need to 
+operate for a long string which is way more than 128. As the time for submitting this "homework" is limited, 
+I just use `int` first. I'd like to modify all of these type problem and perfect it later, but I want send
+this version to you first, as it has already achieved all the required functions. Really sorry about that. 
+
+Best Regards,
+Jianing Sun
+
+
+
