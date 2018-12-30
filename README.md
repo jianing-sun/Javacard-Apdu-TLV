@@ -130,8 +130,7 @@ definition of TLV in order to correctly parse it.
 * I wrote some utilities to do hex/bin/dec convert along with byte array/string convert. Sometimes I need to 
 operate for a long string which is way longer than 128. As the time for submitting this "homework" is limited, 
 I just use `int` first. I'd like to modify all of these type problem and perfect it later, but I want send
-this version to you first, as it has already achieved all the required functions. Really sorry about that. I'll 
-fit that these days.
+this version to you first, as it has already achieved all the required functions. 
 
 Best Regards,  
 Jianing Sun  
