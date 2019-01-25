@@ -17,7 +17,7 @@ code blocks and reliable communication between threads.
 and software APIs, and it separates the hardware, drivers and virtual processor from the software
 application layers.
 
-## Instruction of the Android Application
+## Instruction of the Android App
 1 Below is the main view of this application. From the requirements of this app, there are mainly
 three parts (from top to bottom): 
 * First part used to check and process user input command APDU - check command validity first, 
